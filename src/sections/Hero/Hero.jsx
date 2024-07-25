@@ -1,66 +1,61 @@
-import React from 'react'
-import styles from './HeroStyles.module.css'
-import heroImg from '../../assets/hero-img.jpg'
-import sun from '../../assets/sun.svg'
-import moon from '../../assets/moon.svg'
-import instaIcon from '../../assets/insta-icon.png'
-import githubIcon from '../../assets/github-light.svg'
-import linkedinIcon from '../../assets/linkedin-light.svg'
-import CV from '../../assets/CV.pdf'
+import styles from './HeroStyles.module.css';
+import heroImg from '../../assets/hero-img.jpg';
+import sun from '../../assets/sun.svg';
+import moon from '../../assets/moon.svg';
+
+import githubLight from '../../assets/github-light.svg';
+import githubDark from '../../assets/github-dark.svg';
+import linkedinLight from '../../assets/linkedin-light.svg';
+import linkedinDark from '../../assets/linkedin-dark.svg';
+import CV from '../../assets/cv.pdf';
 import { useTheme } from '../../common/ThemeContext';
 
-const Hero = () => {
-    const {theme, toggleTheme} = useTheme();
+function Hero() {
+  const { theme, toggleTheme } = useTheme();
 
-    const themeIcon = theme === 'light' ? sun : moon;
-
+  const themeIcon = theme === 'light' ? sun : moon;
+  const githubIcon = theme === 'light' ? githubLight : githubDark;
+  const linkedinIcon = theme === 'light' ? linkedinLight : linkedinDark;
 
   return (
-    <section id='hero'>
-      <div className={styles.colorModeContainer }>
-        <img height= '300' width='300' className={styles.hero} src={heroImg} alt="Profile Picture of Priyanka Arora"/>
-
-        <img className={styles.colorMode}
-              src={themeIcon}
-              alt="Color mode icon"
-              onClick={useTheme}/>
-
-    <div className={styles.info}>
-      <h1>
-        Priyanka
-        <br/>
-        Arora
+    <section id="hero" className={styles.container}>
+      <div className={styles.colorModeContainer}>
+        <img
+          src={heroImg}
+          className={styles.hero}
+          alt="Profile picture of Priyanka Arora" height='400' width='40'
+        />
+        <img
+          className={styles.colorMode}
+          src={themeIcon}
+          alt="Color mode icon"
+          onClick={toggleTheme}
+        />
+      </div>
+      <div className={styles.info}>
+        <h1>
+          Priyanka
+          <br />
+          Arora
         </h1>
-        <h2>Mern Developer</h2>
+        <h2>Frontend Developer</h2>
         <span>
-          <a href="https://instagram.com/" target="_blank">
-          <img src={instaIcon} alt="Instagram Icon"/>
-          </a>
           <a href="https://github.com/" target="_blank">
-          <img src={githubIcon} alt="Github Icon"/>
+            <img src={githubIcon} alt="Github icon" />
           </a>
           <a href="https://linkedin.com/" target="_blank">
-          <img src={linkedinIcon} alt="Linkedin Icon"/>
+            <img src={linkedinIcon} alt="Linkedin icon" />
           </a>
         </span>
-
-        <p>Hi Folks, 
-          I am Priyanka Arora,
-           MCA 2024 (NIT Jamshedpur).
-            I have completed my Internship at intellect design arena,
-             Chennai, TamilNadu </p>
-
+        <p className={styles.description}>
+        I graduated from the prestigious college NIT Jamshedpur and possess a passion for technology.
+        </p>
         <a href={CV} download>
-          <button className='hover'>
-            Resume
-          </button>
+          <button className="hover">Resume</button>
         </a>
-
-    </div>
-
       </div>
     </section>
-  )
+  );
 }
 
-export default Hero
+export default Hero;
